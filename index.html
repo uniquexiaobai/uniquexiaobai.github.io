@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>about me</title>
+	<style>
+		body, h1, p {
+			margin: 0;
+		}
+		html, body {
+			height: 100%;
+		}
+		body {
+			position: relative;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: center;
+			    -ms-flex-pack: center;
+			        justify-content: center;
+			-webkit-box-align: center;
+			    -ms-flex-align: center;
+			        align-items: center;
+			background-position: center;
+			background-size: cover;
+			color: #fff;
+            font-family: "PingFang SC", "STHeitiSC-Light", "Helvetica-Light", arial, sans-serif;
+			font-size: 75%;
+		}
+		.container {
+			width: 25%;
+			padding: 1.5rem;
+			border-radius: 1rem;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: normal;
+			    -ms-flex-direction: column;
+			        flex-direction: column;
+			-webkit-box-align: center;
+			    -ms-flex-align: center;
+			        align-items: center;
+			-webkit-box-pack: center;
+			    -ms-flex-pack: center;
+			        justify-content: center;
+			background-color: rgba(0, 0, 0, 0.3);
+		}
+		@media (max-width: 767px) {
+			.container {
+				width: 70%;
+			}
+		}
+		@media (min-width: 768px) and (max-width: 991px) {
+			.container {
+				width: 30%;
+			}
+		}
+		.avatar_logo {
+			width: 8rem;
+			height: 8rem;
+			margin-bottom: 0.3rem;
+			border-radius: 50%;
+		}
+		.avatar_name {
+			font-size: 1.8rem;
+			font-weight: bold;
+		}
+		.avatar_desc {
+			margin-bottom: 0.8rem;
+			text-align: center;
+			font-size: 1rem;
+		}
+		.links {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: normal;
+			    -ms-flex-direction: column;
+			        flex-direction: column;
+			-webkit-box-pack: center;
+			    -ms-flex-pack: center;
+			        justify-content: center;
+			-webkit-box-align: center;
+			    -ms-flex-align: center;
+			        align-items: center;
+		}
+		a {
+			font-size: 0.9rem;
+            text-decoration: none;
+			margin: 0.1rem;
+			color: inherit;
+		}
+        a:hover {
+            color: blue;
+        }
+	</style>
+</head>
+<body>
+	<div class="container">
+		<img class="avatar_logo" src="http://7xp8de.com1.z0.glb.clouddn.com/logo.png" alt="logo"/>
+		<h1 class="avatar_name">公子小白</h1>
+		<p class="avatar_desc">In the future, You will certainly be grateful to your working hard now !</p>
+		<div class="links">
+			<a target="_black" href="http://workhard.top/api/">api</a>
+			<a target="_black" href="https://github.com/uniquexiaobai/wiki">wiki</a>
+			<a target="_black" href="https://github.com/uniquexiaobai/feed">feed</a>
+			<a target="_black" href="https://github.com/uniquexiaobai/">github</a>
+			<a target="_black" href="https://uniquexiaobai.github.io/leetcode/">leetcode</a>
+		</div>
+	</div>
+
+	<script>
+		window.addEventListener('DOMContentLoaded', function () {
+            function zeroize(str) {
+                return str.toString().length === 2 ? str : '0' + str;
+            }
+            function getFormatedDate() {
+                var date = new Date();
+                var year = date.getFullYear().toString();
+                var month = zeroize(date.getMonth() + 1);
+                var day = zeroize(date.getDate());
+
+                return year + month + day;
+            }
+
+            var baseUrl = 'http://oku8qrfzd.bkt.clouddn.com/';
+            var date = getFormatedDate();
+            var url = baseUrl + date;
+
+            document.body.style.backgroundImage = 'url(' + url + ')'
+		});
+	</script>
+</body>
+</html>
