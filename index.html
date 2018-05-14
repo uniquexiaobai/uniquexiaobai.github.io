@@ -6,7 +6,34 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>about me</title>
 	<style>
-		body, h1, p {
+		/* ibm-plex-mono-300 */
+		@font-face {
+		  font-family: 'IBM Plex Mono';
+		  font-style: normal;
+		  font-weight: 300;
+		  src: url('//lib.baomitu.com/fonts/ibm-plex-mono/ibm-plex-mono-300.eot'); /* IE9 Compat Modes */
+		  src: local('IBM Plex Mono'), local('IBMPlex Mono-Normal'),
+		       url('//lib.baomitu.com/fonts/ibm-plex-mono/ibm-plex-mono-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		       url('//lib.baomitu.com/fonts/ibm-plex-mono/ibm-plex-mono-300.woff2') format('woff2'), /* Super Modern Browsers */
+		       url('//lib.baomitu.com/fonts/ibm-plex-mono/ibm-plex-mono-300.woff') format('woff'), /* Modern Browsers */
+		       url('//lib.baomitu.com/fonts/ibm-plex-mono/ibm-plex-mono-300.ttf') format('truetype'), /* Safari, Android, iOS */
+		       url('//lib.baomitu.com/fonts/ibm-plex-mono/ibm-plex-mono-300.svg#IBMPlex Mono') format('svg'); /* Legacy iOS */
+		}
+		/* ibm-plex-mono-regular */
+		@font-face {
+		  font-family: 'IBM Plex Mono';
+		  font-style: normal;
+		  font-weight: regular;
+		  src: url('//lib.baomitu.com/fonts/ibm-plex-mono/ibm-plex-mono-regular.eot'); /* IE9 Compat Modes */
+		  src: local('IBM Plex Mono'), local('IBMPlex Mono-Normal'),
+		       url('//lib.baomitu.com/fonts/ibm-plex-mono/ibm-plex-mono-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		       url('//lib.baomitu.com/fonts/ibm-plex-mono/ibm-plex-mono-regular.woff2') format('woff2'), /* Super Modern Browsers */
+		       url('//lib.baomitu.com/fonts/ibm-plex-mono/ibm-plex-mono-regular.woff') format('woff'), /* Modern Browsers */
+		       url('//lib.baomitu.com/fonts/ibm-plex-mono/ibm-plex-mono-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+		       url('//lib.baomitu.com/fonts/ibm-plex-mono/ibm-plex-mono-regular.svg#IBMPlex Mono') format('svg'); /* Legacy iOS */
+		}
+  
+		body, h1 {
 			margin: 0;
 		}
 		html, body {
@@ -25,13 +52,11 @@
 			        align-items: center;
 			background-position: center;
 			background-size: cover;
-			color: #fff;
-            font-family: "PingFang SC", "STHeitiSC-Light", "Helvetica-Light", arial, sans-serif;
 			font-size: 75%;
+			color: #fff;
 		}
 		.container {
-			width: 25%;
-			padding: 1.5rem;
+			padding: 2rem 5rem;
 			border-radius: 1rem;
 			display: -webkit-box;
 			display: -ms-flexbox;
@@ -48,16 +73,6 @@
 			        justify-content: center;
 			background-color: rgba(0, 0, 0, 0.3);
 		}
-		@media (max-width: 767px) {
-			.container {
-				width: 70%;
-			}
-		}
-		@media (min-width: 768px) and (max-width: 991px) {
-			.container {
-				width: 30%;
-			}
-		}
 		.avatar_logo {
 			width: 8rem;
 			height: 8rem;
@@ -65,15 +80,12 @@
 			border-radius: 50%;
 		}
 		.avatar_name {
-			font-size: 1.8rem;
-			font-weight: bold;
-		}
-		.avatar_desc {
-			margin-bottom: 0.8rem;
-			text-align: center;
-			font-size: 1rem;
+			margin-bottom: 0.5rem;
+			font-size: 1.6rem;
+			font-weight: 400;
 		}
 		.links {
+			font-family: 'IBM Plex Mono';
 			display: -webkit-box;
 			display: -ms-flexbox;
 			display: flex;
@@ -88,13 +100,13 @@
 			    -ms-flex-align: center;
 			        align-items: center;
 		}
-		a {
+		.links > a {
+			margin: 0.1rem;
 			font-size: 0.9rem;
             text-decoration: none;
-			margin: 0.1rem;
 			color: inherit;
 		}
-        a:hover {
+        .links > a:hover {
             color: blue;
         }
 	</style>
@@ -103,7 +115,6 @@
 	<div class="container">
 		<img class="avatar_logo" src="http://7xp8de.com1.z0.glb.clouddn.com/logo.png" alt="logo"/>
 		<h1 class="avatar_name">公子小白</h1>
-		<p class="avatar_desc">In the future, You will certainly be grateful to your working hard now !</p>
 		<div class="links">
 			<a target="_black" href="http://workhard.top/api/">api</a>
 			<a target="_black" href="https://github.com/uniquexiaobai/wiki">wiki</a>
