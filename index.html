@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>about me</title>
+	<title>About me</title>
 	<style>
 		/* ibm-plex-mono-300 */
 		@font-face {
@@ -144,6 +144,12 @@
 
             document.body.style.backgroundImage = 'url(' + url + ')'
 		});
+
+		if ('serviceWorker' in navigator) {
+		    window.onload = function () {
+		        navigator.serviceWorker.register('/sw.js');
+		    };
+		}
 	</script>
 </body>
 </html>
