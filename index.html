@@ -113,7 +113,7 @@
 </head>
 <body>
 	<div class="container">
-		<img class="avatar_logo" src="http://7xp8de.com1.z0.glb.clouddn.com/logo.png" alt="logo"/>
+		<img class="avatar_logo" src="//uniquexiaobai.oss-cn-hangzhou.aliyuncs.com/logo.png" alt="logo"/>
 		<h1 class="avatar_name">公子小白</h1>
 		<div class="links">
 			<a target="_black" href="http://workhard.top/api/">api</a>
@@ -125,7 +125,16 @@
 	</div>
 
 	<script>
+		var bingApi = 'https://uniquexiaobai.cn/api/bing/';
+		var defaultImage = 'https://uniquexiaobai.oss-cn-hangzhou.aliyuncs.com/bing.png';
+
+		function setBackgroundImage(url) {
+			url = url || defaultImage;
+			document.body.style.backgroundImage = 'url(' + url + ')';
+		}
+
 		window.addEventListener('DOMContentLoaded', function () {
+			/*
             function zeroize(str) {
                 return str.toString().length === 2 ? str : '0' + str;
             }
@@ -141,9 +150,30 @@
             var baseUrl = 'http://oku8qrfzd.bkt.clouddn.com/';
             var date = getFormatedDate();
             var url = baseUrl + date;
+            */
 
-            document.body.style.backgroundImage = 'url(' + url + ')'
+            var request = new XMLHttpRequest();
+            request.open('GET', bingApi);
+            request.send();
+            request.onreadystatechange = function() {
+            	if (request.readyState === 4) {
+            		if (request.status === 200) {
+            			try {
+            				var response = JSON.parse(request.responseText) || {};
+            				var url = response.data;
+
+            				setBackgroundImage(url);
+            			} catch (err) {
+            				setBackgroundImage();
+            				console.log(err);
+            			}
+            		} else {
+            			setBackgroundImage();
+            		}
+            	}
+            }
 		});
+
 
 		if ('serviceWorker' in navigator) {
 		    window.onload = function () {
