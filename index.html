@@ -134,6 +134,7 @@
 		}
 
 		window.addEventListener('DOMContentLoaded', function () {
+			
 			/*
             function zeroize(str) {
                 return str.toString().length === 2 ? str : '0' + str;
@@ -152,28 +153,55 @@
             var url = baseUrl + date;
             */
 
-            var request = new XMLHttpRequest();
-            request.open('GET', bingApi);
-            request.send();
-            request.onreadystatechange = function() {
-            	if (request.readyState === 4) {
-            		if (request.status === 200) {
-            			try {
-            				var response = JSON.parse(request.responseText) || {};
-            				var url = response.data;
+            if (window.fetch && window.Promise) {
+            	fetch(bingApi)
+	            	.then(function(response) {
+	            		if (response.status >= 200 && response.status < 300) {
+	            			return Promise.resolve(response);
+	            		} else {
+	            			return Promise.reject(new Error(response.statusText));
+	            		}
+	            	})
+	            	.then(function(response) {
+	            		return response.json();
+	            	})
+	            	.then(function(response) {
+	            		var url = response.data;
+	            		if (url) {
+	            			setBackgroundImage(url);
+	            		} else {
+	            			setBackgroundImage();
+	            		}
+	            	})
+	            	.catch(function(err) {
+	            		console.log(err);
+	            	});
+            } else {
+            	var request = new XMLHttpRequest();
+	            request.open('GET', bingApi);
+	            request.send();
+	            request.onreadystatechange = function() {
+	            	if (request.readyState === 4) {
+	            		if (request.status === 200) {
+	            			try {
+	            				var response = JSON.parse(request.responseText) || {};
+	            				var url = response.data;
 
-            				setBackgroundImage(url);
-            			} catch (err) {
-            				setBackgroundImage();
-            				console.log(err);
-            			}
-            		} else {
-            			setBackgroundImage();
-            		}
-            	}
+	            				setBackgroundImage(url);
+	            			} catch (err) {
+	            				setBackgroundImage();
+	            				console.log(err);
+	            			}
+	            		} else {
+	            			setBackgroundImage();
+	            		}
+	            	}
+	            }
             }
-		});
 
+            var preImage = new Image();
+            preImage.src = defaultImage;
+		});
 
 		if ('serviceWorker' in navigator) {
 		    window.onload = function () {
