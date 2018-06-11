@@ -6,6 +6,11 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
+	new RegExp('https://uniquexiaobai.cn'),
+	workbox.strategies.staleWhileRevalidate()
+);
+
+workbox.routing.registerRoute(
 	new RegExp('https?://cn.bing.com'),
 	workbox.strategies.staleWhileRevalidate()
 );
