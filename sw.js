@@ -6,7 +6,7 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
-	new RegExp('https://uniquexiaobai.cn'),
+	new RegExp('https://arguments.cn/api'),
 	workbox.strategies.staleWhileRevalidate()
 );
 
