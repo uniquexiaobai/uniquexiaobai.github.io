@@ -116,18 +116,18 @@
 		<img class="avatar_logo" src="//uniquexiaobai.oss-cn-hangzhou.aliyuncs.com/logo.png" alt="logo"/>
 		<h1 class="avatar_name">公子小白</h1>
 		<div class="links">
-			<a target="_black" href="https://uniquexiaobai.cn/api">api</a>
-			<a target="_black" href="https://github.com/uniquexiaobai/wiki">wiki</a>
-			<a target="_black" href="https://github.com/uniquexiaobai/feed">feed</a>
-			<a target="_black" href="https://github.com/uniquexiaobai">github</a>
-			<a target="_black" href="https://uniquexiaobai.github.io/leetcode">leetcode</a>
-			<a target="_black" href="https://uniquexiaobai.cn/cheatsheet">cheatsheet</a>
+			<a href="https://uniquexiaobai.cn/api">api</a>
+			<a href="https://github.com/uniquexiaobai/wiki">wiki</a>
+			<a href="https://github.com/uniquexiaobai/feed">feed</a>
+			<a href="https://github.com/uniquexiaobai">github</a>
+			<a href="https://uniquexiaobai.github.io/leetcode">leetcode</a>
+			<a href="https://uniquexiaobai.cn/cheatsheet">cheatsheet</a>
 		</div>
 	</div>
 
 	<script>
-		var bingApi = 'https://arguments.cn/api/bing/';
-		var defaultImage = 'https://uniquexiaobai.oss-cn-hangzhou.aliyuncs.com/bing.png';
+		var bingApi = 'https://arguments.cn/api/bing/',
+		    defaultImage = 'https://uniquexiaobai.oss-cn-hangzhou.aliyuncs.com/bing.png';
 
 		function setBackgroundImage(url) {
 			url = url || defaultImage;
@@ -135,7 +135,6 @@
 		}
 
 		window.addEventListener('DOMContentLoaded', function () {
-			
 			/*
             function zeroize(str) {
                 return str.toString().length === 2 ? str : '0' + str;
@@ -154,52 +153,29 @@
             var url = baseUrl + date;
             */
 
-            if (window.fetch && window.Promise) {
-            	fetch(bingApi)
-	            	.then(function(response) {
-	            		if (response.status >= 200 && response.status < 300) {
-	            			return Promise.resolve(response);
-	            		} else {
-	            			return Promise.reject(new Error(response.statusText));
-	            		}
-	            	})
-	            	.then(function(response) {
-	            		return response.json();
-	            	})
-	            	.then(function(response) {
-	            		var url = response.data;
-	            		if (url) {
-	            			setBackgroundImage(url);
-	            		} else {
-	            			setBackgroundImage();
-	            		}
-	            	})
-	            	.catch(function(err) {
-	            		console.log(err);
-	            	});
-            } else {
-            	var request = new XMLHttpRequest();
-	            request.open('GET', bingApi);
-	            request.send();
-	            request.onreadystatechange = function() {
-	            	if (request.readyState === 4) {
-	            		if (request.status === 200) {
-	            			try {
-	            				var response = JSON.parse(request.responseText) || {};
-	            				var url = response.data;
-
-	            				setBackgroundImage(url);
-	            			} catch (err) {
-	            				setBackgroundImage();
-	            				console.log(err);
-	            			}
-	            		} else {
-	            			setBackgroundImage();
-	            		}
-	            	}
-	            }
-            }
-
+            fetch(bingApi)
+                .then(function(response) {
+                    if (response.status >= 200 && response.status < 300) {
+                        return Promise.resolve(response);
+                    } else {
+                        return Promise.reject(new Error(response.statusText));
+                    }
+                })
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(response) {
+                    var url = response.data;
+                    if (url) {
+                        setBackgroundImage(url);
+                    } else {
+                        setBackgroundImage();
+                    }
+                })
+                .catch(function(err) {
+                    console.log(err);
+                });
+            
             var preImage = new Image();
             preImage.src = defaultImage;
 		});
@@ -209,6 +185,10 @@
 		        navigator.serviceWorker.register('/sw.js');
 		    };
 		}
-	</script>
+
+        // quicklink
+        !function(e,n){"object"==typeof exports&&"undefined"!=typeof module?module.exports=n():"function"==typeof define&&define.amd?define(n):e.quicklink=n()}(this,function(){var e={};function n(e){return new Promise(function(n,t){var r=new XMLHttpRequest;r.open("GET",e,r.withCredentials=!0),r.onload=function(){200===r.status?n():t()},r.send()})}var t,r,i=(t="prefetch",((r=document.createElement("link")).relList||{}).supports&&r.relList.supports(t)?function(e){return new Promise(function(n,t){var r=document.createElement("link");r.rel="prefetch",r.href=e,r.onload=n,r.onerror=t,document.head.appendChild(r)})}:n);function o(t,r,o){if(!(e[t]||(o=navigator.connection)&&((o.effectiveType||"").includes("2g")||o.saveData)))return(r?function(e){return null==self.fetch?n(e):fetch(e,{credentials:"include"})}:i)(t).then(function(){e[t]=!0})}var u=u||function(e){var n=Date.now();return setTimeout(function(){e({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-n))}})},1)},c=new Set,f=new IntersectionObserver(function(e){e.forEach(function(e){if(e.isIntersecting){var n=e.target.href;c.has(n)&&a(n)}})});function a(e){c.delete(e),o(new URL(e,location.href).toString(),f.priority)}return function(e){e=Object.assign({timeout:2e3,priority:!1,timeoutFn:u,el:document},e),f.priority=e.priority;var n=e.origins||[location.hostname],t=e.ignores||[];e.timeoutFn(function(){e.urls?e.urls.forEach(a):Array.from(e.el.querySelectorAll("a"),function(e){f.observe(e),n.length&&!n.includes(e.hostname)||function e(n,t){return Array.isArray(t)?t.some(function(t){return e(n,t)}):(t.test||t).call(t,n.href,n)}(e,t)||c.add(e.href)})},{timeout:e.timeout})}});
+        quicklink();
+    </script>
 </body>
 </html>
