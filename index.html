@@ -116,12 +116,13 @@
 		<img class="avatar_logo" src="//uniquexiaobai.oss-cn-hangzhou.aliyuncs.com/logo.png" alt="logo"/>
 		<h1 class="avatar_name">公子小白</h1>
 		<div class="links">
-			<a href="https://uniquexiaobai.cn/api">api</a>
-			<a href="https://github.com/uniquexiaobai/wiki">wiki</a>
-			<a href="https://github.com/uniquexiaobai/feed">feed</a>
-			<a href="https://github.com/uniquexiaobai">github</a>
-			<a href="https://uniquexiaobai.github.io/leetcode">leetcode</a>
-			<a href="https://uniquexiaobai.cn/cheatsheet">cheatsheet</a>
+			<a href="https://arguments.cn/api/">api</a>
+			<a href="https://github.com/uniquexiaobai/wiki/">wiki</a>
+			<a href="https://github.com/uniquexiaobai/feed/">feed</a>
+			<a href="https://lokibai.netlify.com/">blog</a>
+			<a href="https://github.com/uniquexiaobai/">github</a>
+			<a href="https://uniquexiaobai.github.io/leetcode/">leetcode</a>
+			<a href="https://arguments.cn/cheatsheet/">cheatsheet</a>
 		</div>
 	</div>
 
@@ -153,7 +154,7 @@
             var url = baseUrl + date;
             */
 
-            fetch(bingApi)
+            fetch(bingApi, {mode: 'no-cors'})
                 .then(function(response) {
                     if (response.status >= 200 && response.status < 300) {
                         return Promise.resolve(response);
@@ -172,8 +173,8 @@
                         setBackgroundImage();
                     }
                 })
-                .catch(function(err) {
-                    console.log(err);
+                .catch(function() {
+                    setBackgroundImage();
                 });
             
             var preImage = new Image();
