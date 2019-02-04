@@ -127,33 +127,15 @@
 
 	<script>
 		var bingApi = 'https://arguments.cn/api/bing/',
-		    defaultImage = 'https://uniquexiaobai.oss-cn-hangzhou.aliyuncs.com/bing.png';
+		    defaultImageUrl = 'https://uniquexiaobai.oss-cn-hangzhou.aliyuncs.com/bing.png';
 
 		function setBackgroundImage(url) {
-			url = url || defaultImage;
+			url = url || defaultImageUrl;
 			document.body.style.backgroundImage = 'url(' + url + ')';
 		}
 
 		window.addEventListener('DOMContentLoaded', function () {
-			/*
-            function zeroize(str) {
-                return str.toString().length === 2 ? str : '0' + str;
-            }
-            function getFormatedDate() {
-                var date = new Date();
-                var year = date.getFullYear().toString();
-                var month = zeroize(date.getMonth() + 1);
-                var day = zeroize(date.getDate());
-
-                return year + month + day;
-            }
-
-            var baseUrl = 'http://oku8qrfzd.bkt.clouddn.com/';
-            var date = getFormatedDate();
-            var url = baseUrl + date;
-            */
-
-            fetch(bingApi, {mode: 'no-cors'})
+            fetch(bingApi)
                 .then(function(response) {
                     if (response.status >= 200 && response.status < 300) {
                         return Promise.resolve(response);
@@ -177,7 +159,7 @@
                 });
             
             var preImage = new Image();
-            preImage.src = defaultImage;
+            preImage.src = defaultImageUrl;
 		});
 
 		if ('serviceWorker' in navigator) {
