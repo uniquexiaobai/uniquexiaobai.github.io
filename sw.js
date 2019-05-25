@@ -6,7 +6,7 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
-	new RegExp('https://arguments.cn/api'),
+	new RegExp('https://bing-api.uniquexiaobai.now.sh/'),
 	workbox.strategies.staleWhileRevalidate()
 );
 
